@@ -10,62 +10,7 @@ tags: [Explorer HAT, Raspberry Pi, Python, Programming]
 images: [images/tba.png]
 difficulty: Beginner
 -->
-# Explorer HAT Function Reference
 
-This reference details all of the available functions on Explorer HAT touch inputs, lights, inputs, outputs, analog inputs and motor driver.
-
-### Touch ( Explorer HAT only )
-
-Explorer HAT includes 8 touch pads which act just like buttons. We've fine tuned these to be really responsive, and you can easily use them for entering PIN codes, controlling a project or playing the drums.
-
-The 8 pads are named "one" to "eight" and can be referenced as such:
-
-```python
-explorerhat.touch.one
-explorerhat.touch.two
-...
-explorerhat.touch.eight
-```
-
-Each touch pad has a number of functions for both reading its state and binding events to certain conditions:
-
-```python
-explorerhat.touch.is_pressed()
-```
-
-Returns True if the pad is being touched.
-
-```python
-explorerhat.touch.is_held()
-```
-Returns True if the pad has been held down for some time
-
-```python
-explorerhat.touch.pressed( handler_function )
-```
-
-Calls "handler_function" whenever the pad is touched.
-
-The handler function should accept two things, a channel ( the number of the pad ) and an event ( whether it's pressed/released ) and look something like this:
-
-```python
-def handle(channel, event)
-    print("Got {} on {}".format(event, channel))
-```
-
-An event of `press` indicates the touch pad was pressed, and an event of `release` indicates it was released.
-
-```python
-explorerhat.touch.released( handler_funtion )
-```
-
-Calls "handler_function" whenever the pad is released. The handler function is the same as described above.
-
-```python
-explorerhat.touch.held( handler_function )
-```
-
-Calls "handler_function" repeatedly while the pad is held down ( default once every 540ms )
 
 ### Input
 
@@ -108,17 +53,6 @@ When you turn Explorer HAT/pHAT outputs on ( logic HIGH ) it will sink current t
 * `fade( from, to, time )` - Fade from 0-100 to 0-100 brightness over a number of seconds specified by "time"
 * `stop()` - Stops any running blink, fade or pulse action
 
-### Light ( Explorer HAT only )
-
-There are four lights on Explorer HAT, Yellow, Blue, Red and Green. These are named as such in Python:
-
-```python
-explorerhat.light.yellow
-...
-explorerhat.light.green
-```
-
-Each light includes all of the functionality of an output. See above.
 
 ### Analog ( Explorer HAT Pro and pHAT only )
 
